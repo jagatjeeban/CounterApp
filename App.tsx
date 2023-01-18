@@ -8,9 +8,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Button} from 'react-native';
+  TouchableOpacity} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-function App(): JSX.Element {
+function App(): JSX.Element{
 
 const [integer, setInteger] = useState(0)
 const [counter, setCounter] = useState(0)
@@ -18,9 +19,21 @@ const [counter, setCounter] = useState(0)
   return (
     <View style={styles.body}>
       <Text style= {styles.text}>{integer}</Text>
-      <Button 
-      title='Add' 
-      onPress={() => {setInteger(integer+5); setCounter(counter+1)}}/>
+      <TouchableOpacity 
+      style={
+        {
+          backgroundColor: '#6495ED',
+          width: 100,
+          height: 50,
+          borderRadius: 6.5,
+          alignItems: 'center',
+          justifyContent: 'center'
+        }
+      } 
+      activeOpacity= {0.1}
+      onPress={() => {setInteger(integer+5); setCounter(counter+1)}}>
+        <Text style={styles.view1}>{'Add'}</Text>
+      </TouchableOpacity>
       <Text style = {styles.text}>You clicked {counter} times.</Text>
     </View>
   );
@@ -38,11 +51,17 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     marginBottom: 30,
     marginTop: 30,
-    fontSize: 30
+    fontSize: 30,
+    fontStyle: 'italic'
   },
-  button: {
-     padding: 20
-  }
+  view1: {
+    color: '#ffffff',
+    fontWeight: 'normal',
+    justifyContent: 'center',
+    fontSize: 20,
+    textTransform: 'uppercase'
+  },
+
 });
 
 export default App;
